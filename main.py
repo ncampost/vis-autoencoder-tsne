@@ -65,30 +65,23 @@ def import_format_data():
     return x_train, y_train, x_test
 
 def build_autoencoder(input_shape, encoding_dim):
-    # Activation function
-    encoding_activation = 'tanh'
-    decoding_activation = 'tanh'
+    # Activation function: selu for SNN's: https://arxiv.org/pdf/1706.02515.pdf
+    encoding_activation = 'selu'
+    decoding_activation = 'selu'
 
     # Preliminary parameters
     inputs = Input(shape=input_shape)
     feat_dim = input_shape[0]
 
-    # kernel_initializer='lecun_normal'
     # Encoding layers: successive smaller layers, then a batch normalization layer.
-    encoding = Dense(feat_dim, activation=encoding_activation)(inputs)
-    encoding = BatchNormalization()(encoding)
+    encoding = Dense(feat_dim, activation=encoding_activation, kernel_initializer='lecun_normal')(inputs)
     encoding = Dense(feat_dim/2, activation=encoding_activation)(encoding)
-    encoding = BatchNormalization()(encoding)
     encoding = Dense(feat_dim/4, activation=encoding_activation)(encoding)
-    encoding = BatchNormalization()(encoding)
     encoding = Dense(encoding_dim, activation=encoding_activation)(encoding)
-    encoding = BatchNormalization()(encoding)
 
     # Decoding layers for reconstruction
     decoding = Dense(feat_dim/4, activation=decoding_activation)(encoding)
-    decoding = BatchNormalization()(decoding)
     decoding = Dense(feat_dim/2, activation=decoding_activation)(decoding)
-    decoding = BatchNormalization()(decoding)
     decoding = Dense(feat_dim, activation=decoding_activation)(decoding)
     
     # Return the whole model and the encoding section as objects
