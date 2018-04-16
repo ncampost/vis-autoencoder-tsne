@@ -1,6 +1,8 @@
 # Visualization of (relatively) clear clustering of MNIST dataset- autoencoder + t-SNE dim-reduction
 
-Inspired by [this paper](https://arxiv.org/pdf/1802.00187.pdf), This script trains an autoencoder to compress the MNIST dataset into a relatively small dimension (30 for the below images), then applies t-SNE dimensionality reduction to compress the dataset further into 2 or 3 dimensions which are visualized below.
+Inspired by [this paper](https://arxiv.org/pdf/1802.00187.pdf), this script trains an autoencoder to compress the MNIST dataset into a relatively small dimension (30 for the below images), then applies t-SNE dimensionality reduction to compress the dataset further into 2 or 3 dimensions which are visualized below.
+
+There's nothing particularly special about the MNIST dataset here- this can be applied to any set of data.
 
 Below is the resulting visualization of the MNIST dataset visualized in two dimensions:
 
