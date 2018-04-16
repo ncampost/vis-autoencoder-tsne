@@ -6,6 +6,8 @@ Below is the resulting visualization of the MNIST dataset visualized in two dime
 
 ![2-dim](imgs/mnist2.png)
 
+and in three dimensions:
+
 ![3-dim](imgs/mnist3.png)
 
 It may be hard to see the clustering in a static image, so here is an animated version of the above plot.
